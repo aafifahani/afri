@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afridha S Portfolio</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+:root {
+    --primary: #004b8d; /* Marine Blue */
+    --primary-light: #e0f2fe;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --bg-light: #f8fafc;
+    --bg-white: #ffffff;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(135deg, var(--primary) 0%, #003366 100%);
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+}
+
+header img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center 15%;
+    border-radius: 50%;
+    border: 8px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 25px;
+    animation: float 5s ease-in-out infinite;
+    box-shadow: var(--shadow-lg);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+header h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.4rem;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+/* SECTION GLOBAL */
+section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section:nth-child(even) {
+    background-color: var(--bg-white);
+    max-width: 100%;
+}
+
+section:nth-child(even) .content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--primary);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-content: center;
+    gap: 30px;
+}
+
+/* CARDS */
+.card {
+    background: var(--bg-white);
+    color: var(--text-main);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    box-shadow: var(--shadow);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.card p {
+    color: var(--text-muted);
+}
+
+/* EDUCATION FLIP */
+.flip-card {
+    height: 220px;
+    perspective: 1000px;
+}
+
+.flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-front, .flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-white);
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    backface-visibility: hidden;
+    box-shadow: var(--shadow);
+}
+
+.flip-back {
+    background: var(--primary);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+/* SKILLS */
+.skill-list {
+    text-align: left;
+}
+
+.skill-list h3 {
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.skill-list p {
+    margin: 10px 0;
+    padding: 8px 15px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+/* PROJECT CARD */
+.project-card {
+    background: var(--bg-white);
+    padding: 35px;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.4s;
+    box-shadow: var(--shadow);
+}
+
+.project-card h3 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.project-card p {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.project-card:hover {
+    background: var(--primary);
+}
+
+.project-card:hover h3, .project-card:hover p {
+    color: white;
+}
+
+/* ACHIEVEMENTS */
+.achievement-card {
+    background: var(--bg-white);
+    color: var(--primary);
+    padding: 30px;
+    border-radius: 20px;
+    font-weight: 600;
+    border: 1px solid #e2e8f0;
+    transition: 0.3s;
+    box-shadow: var(--shadow);
+}
+
+.achievement-card:hover {
+    background: var(--primary-light);
+    border-color: var(--primary);
+}
+
+/* FOOTER */
+footer {
+    background: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    transition: 0.3s;
+}
+
+footer a:hover {
+    border-bottom-color: white;
+}
+
+footer p {
+    margin: 10px 0;
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    header h1 { font-size: 2.5rem; }
+    header img { width: 160px; height: 160px; }
+    section { padding: 50px 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="assets/image.png" alt="Afridha S">
+    <h1>Afridha S</h1>
+    <p>Web Developer & CS Engineering Student</p>
+</header>
+
+<section id="about">
+    <div class="content-wrapper">
+        <h2>About Me</h2>
+        <div class="card">
+            <p>
+            I’m a passionate Web Developer and Computer Science Engineering student with a strong interest in building clean, responsive, and user-friendly websites. I bridge the gap between technical complexity and intuitive design, while also enjoying technical writing and content creation.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="education">
+    <div class="content-wrapper">
+        <h2>Education</h2>
+        <div class="grid">
+            <div class="flip-card">
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <h3>Under Graduate</h3>
+                        <p>JP College of Engineering</p>
+                    </div>
+                    <div class="flip-back">
+                        <p>CGPA: 8.18</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <h3>Higher Secondary</h3>
+                        <p>SRM Govt Girls Hr Sec School</p>
+                    </div>
+                    <div class="flip-back">
+                        <p>85%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="skills">
+    <div class="content-wrapper">
+        <h2>Skills</h2>
+        <div class="grid">
+            <div class="card skill-list">
+                <h3>Technical</h3>
+                <p>HTML & CSS</p>
+                <p>JavaScript</p>
+                <p>Python</p>
+                <p>Java & C</p>
+            </div>
+
+            <div class="card skill-list">
+                <h3>Soft Skills</h3>
+                <p>Communication</p>
+                <p>Time Management</p>
+                <p>Adaptability</p>
+                <p>Leadership</p>
+            </div>
+
+            <div class="card skill-list">
+                <h3>Design & Tools</h3>
+                <p>Figma</p>
+                <p>Canva</p>
+                <p>Git & GitHub</p>
+                <p>VS Code</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects">
+    <div class="content-wrapper">
+        <h2>Projects</h2>
+        <div class="grid">
+            <div class="project-card">
+                <h3>Tour Companion</h3>
+                <p>A smart travel assistant that provides real-time information about tourist spots, navigation, and local highlights using modern web APIs.</p>
+            </div>
+            <div class="project-card">
+                <h3>Face Recognition</h3>
+                <p>An AI-based security system developed using Python and OpenCV for automated identity verification and real-time attendance tracking.</p>
+            </div>
+            <div class="project-card">
+                <h3>Quiz Game</h3>
+                <p>An interactive web-based quiz application built with vanilla JavaScript featuring dynamic levels and competitive score tracking.</p>
+            </div>
+            <div class="project-card">
+                <h3>ArtistHub</h3>
+                <p>A comprehensive portfolio platform for creative artists to showcase their work, manage digital galleries, and connect with clients.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="achievements">
+    <div class="content-wrapper">
+        <h2>Achievements</h2>
+        <div class="grid">
+            <div class="achievement-card">MSME Hackathon Participant</div>
+            <div class="achievement-card">AI Upskilling Program Certified</div>
+        </div>
+    </div>
+</section>
+
+<section id="languages">
+    <div class="content-wrapper">
+        <h2>Languages</h2>
+        <div class="grid">
+            <div class="card">Tamil</div>
+            <div class="card">English</div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>Email: <a href="mailto:yourmail@gmail.com">afridhasulthan204@gmail.com</a></p>
+    <p>LinkedIn: <a href="#" target="_blank">linkedin.com/in/afridhas</a></p>
+    <p>GitHub: <a href="#" target="_blank">github.com/afridhas</a></p>
+    <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.6;">&copy; 2026 Afridha S. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
